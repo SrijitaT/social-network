@@ -1,20 +1,15 @@
-import { GET_ERRORS, SET_CURRENT_USER } from "./types";
+import { SET_CURRENT_USER } from "./types";
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
+import { getErrors } from "./errorActions";
+import { clearCurrentProfile } from "./profileActions";
 
 export const registerUser = (userData, history) => dispatch => {
   axios
     .post("/api/users/register", userData)
     .then(res => history.push("/login"))
     .catch(err => dispatch(getErrors(err)));
-};
-
-export const getErrors = error => {
-  return {
-    type: GET_ERRORS,
-    payload: error.response.data
-  };
 };
 
 // export const registerUserSuccess = newUser => {
@@ -56,4 +51,5 @@ export const logoutUser = () => dispatch => {
   setAuthToken(false);
   //set current user to empty object
   dispatch(setCurrentUser({}));
+  dispatch(clearCurrentProfile());
 };
