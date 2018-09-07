@@ -60,7 +60,7 @@ class AddExperience extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <Link to="/dashboard" className="btn btn-light">
-                Go Back
+                <i className="fas fa-arrow-left" />
               </Link>
               <h1 className="display-4 text-center">Add Experience</h1>
               <p className="lead text-center">
