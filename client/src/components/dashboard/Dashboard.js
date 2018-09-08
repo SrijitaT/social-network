@@ -11,7 +11,7 @@ import Education from "./Education";
 
 class Dashboard extends Component {
   componentDidMount() {
-    this.props.getCurrentProfile();
+    if (this.props.profile.profile == null) this.props.getCurrentProfile();
   }
   onDeleteClick() {
     this.props.deleteAccount();

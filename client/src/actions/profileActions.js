@@ -2,7 +2,9 @@ import {
   GET_PROFILE,
   GET_PROFILES,
   PROFILE_LOADING,
-  CLEAR_CURRENT_PROFILE
+  CLEAR_CURRENT_PROFILE,
+  ADD_EDUCATION,
+  ADD_EXPERIENCE
 } from "./types";
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
@@ -57,7 +59,10 @@ export const deleteAccount = () => dispatch => {
 export const addExperience = (expData, history) => dispatch => {
   axios
     .post("/api/profile/experience", expData)
-    .then(res => history.push("/dashboard"))
+    .then(res => {
+      dispatch(afteraddExperience(res));
+      history.push("/dashboard");
+    })
     .catch(err => dispatch(getErrors(err)));
 };
 
@@ -65,8 +70,26 @@ export const addExperience = (expData, history) => dispatch => {
 export const addEducation = (eduData, history) => dispatch => {
   axios
     .post("/api/profile/education", eduData)
-    .then(res => history.push("/dashboard"))
-    .catch(err => dispatch(getErrors(err)));
+    .then(res => {
+      dispatch(afteraddEducation(res));
+      history.push("/dashboard");
+    })
+    .catch(err => {
+      console.log(err, "err");
+      dispatch(getErrors(err));
+    });
+};
+export const afteraddEducation = eduData => {
+  return {
+    type: ADD_EDUCATION,
+    payload: { education: eduData.data.education }
+  };
+};
+export const afteraddExperience = expData => {
+  return {
+    type: ADD_EXPERIENCE,
+    payload: { experience: expData.data.experience }
+  };
 };
 
 export const deleteExperience = id => dispatch => {

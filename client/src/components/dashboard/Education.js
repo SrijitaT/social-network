@@ -24,7 +24,7 @@ class Education extends Component {
         </td>
         <td>
           <button
-            onClick={this.onDeleteClick.bind(this, edu._id)}
+            onClick={() => this.onDeleteClick(edu._id)}
             className="btn btn-danger"
           >
             <i className="fa fa-trash" aria-hidden="true" />
@@ -35,7 +35,7 @@ class Education extends Component {
     return (
       <div>
         <h4 className="mb-4">Education Credentials</h4>
-        <table className="table">
+        <table className="table table-striped table-dark">
           <thead>
             <tr>
               <th>School</th>
