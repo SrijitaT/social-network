@@ -4,7 +4,8 @@ import {
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
   ADD_EDUCATION,
-  ADD_EXPERIENCE
+  ADD_EXPERIENCE,
+  SHOW_PROFILE
 } from "./types";
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
@@ -42,7 +43,10 @@ export const clearCurrentProfile = () => {
 export const createProfile = (profileData, history) => dispatch => {
   axios
     .post("/api/profile", profileData)
-    .then(res => history.push("/dashboard"))
+    .then(res => {
+      dispatch(getProfile(res.data));
+      history.push("/dashboard");
+    })
     .catch(err => dispatch(getErrors(err)));
 };
 
@@ -78,6 +82,12 @@ export const addEducation = (eduData, history) => dispatch => {
       console.log(err, "err");
       dispatch(getErrors(err));
     });
+};
+export const aftercreateProfile = profile => {
+  return {
+    type: SHOW_PROFILE,
+    payload: { profile: profile.data }
+  };
 };
 export const afteraddEducation = eduData => {
   return {
