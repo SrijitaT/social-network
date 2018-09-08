@@ -30,9 +30,9 @@ class ProfileItem extends Component {
               View Profile
             </Link>
             <span>{"   "}</span>
-            <Link to="/connect" className="btn btn-warning">
+            <button type="button" class="btn btn-warning" disabled="true">
               Connect
-            </Link>
+            </button>
           </div>
           <div className="col-md-4 d-none d-md-block">
             <h4>Skill Set</h4>
