@@ -72,3 +72,7 @@ footer {
   /*margin-left: 50%;*/
   border-radius: 72px;
 }
+
+.list-item-blue {
+  background: rgba(17, 129, 224, 0.7);
+}

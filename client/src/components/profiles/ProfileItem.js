@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import isEmpty from '../../validation/is-empty';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import isEmpty from "../../validation/is-empty";
 
 class ProfileItem extends Component {
   render() {
@@ -16,7 +16,7 @@ class ProfileItem extends Component {
           <div className="col-lg-6 col-md-4 col-8">
             <h3>{profile.user.name}</h3>
             <p>
-              {profile.status}{' '}
+              {profile.status}{" "}
               {isEmpty(profile.company) ? null : (
                 <span>at {profile.company}</span>
               )}
@@ -28,6 +28,10 @@ class ProfileItem extends Component {
             </p>
             <Link to={`/profile/${profile.handle}`} className="btn btn-info">
               View Profile
+            </Link>
+            <span>{"   "}</span>
+            <Link to="/connect" className="btn btn-warning">
+              Connect
             </Link>
           </div>
           <div className="col-md-4 d-none d-md-block">
