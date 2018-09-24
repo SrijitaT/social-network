@@ -76,3 +76,11 @@ footer {
 .list-item-blue {
   background: rgba(17, 129, 224, 0.7);
 }
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-menu a {
+  color: #000;
+}

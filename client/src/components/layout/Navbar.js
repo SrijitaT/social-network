@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import NotificationMenu from "./Notification";
 
 class Navbar extends Component {
   onLogoutClick(e) {
@@ -24,6 +25,22 @@ class Navbar extends Component {
             Dashboard
           </Link>
         </li>
+        <li className="nav-item">
+          <div className="dropdown">
+            <button
+              className="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i className="fas fa-bell" />
+            </button>
+            <NotificationMenu />
+          </div>
+        </li>
+
         <li className="nav-item">
           <a href="#" onClick={e => this.onLogoutClick(e)} className="nav-link">
             <img
